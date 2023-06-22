@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import imagenRegistro from "../imagenes/imagen-registro.png";
 import iconoRegistro from '../bienvenida/imagenes/icono-registro.png';
 import { useNavigate } from 'react-router-dom';
+import ojito from  "../bienvenida/imagenes/ojo.png";
 
 export default function RegisterPage(){
 
@@ -23,9 +24,14 @@ export default function RegisterPage(){
         <div className='contenedor-texto-login'>
           <input className='input-login' type='mail' placeholder="Email"></input>
           <hr className='barra-input'></hr>
+          <input className='input-login' type='number' placeholder="Teléfono"></input>
+          <hr className='barra-input'></hr>
           <input className='input-login' type='text' placeholder="Nombre de usuario"></input>
           <hr className='barra-input'></hr>
-          <input className='input-login' type='password' placeholder="Contraseña"></input>
+          <div>
+            <input className='input-login' type='password' placeholder="Contraseña"></input> 
+            <img src={ojito} classname='ojo' alt="icono"></img>
+          </div>
           <hr className='barra-input'></hr>
           <h5>Ya tienes cuenta? <Link to="/login">Inicia sesión</Link></h5>   
         </div>
