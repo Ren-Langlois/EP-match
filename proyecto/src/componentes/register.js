@@ -1,10 +1,10 @@
-import React from 'react';
 import '../stylesheet/login.css';
 import { Link } from 'react-router-dom';
 import imagenRegistro from "../imagenes/imagen-registro.png";
 import iconoRegistro from '../bienvenida/imagenes/icono-registro.png';
 import { useNavigate } from 'react-router-dom';
 import ojito from  "../bienvenida/imagenes/ojo.png";
+import React, { useState } from 'react';
 
 export default function RegisterPage(){
 
@@ -14,6 +14,13 @@ export default function RegisterPage(){
     history('/');
   };
 
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+  
   return(
     <div className='contenedor-login'>
       <img className="img" src={imagenRegistro} alt="registro"></img>
@@ -29,8 +36,18 @@ export default function RegisterPage(){
           <input className='input-login' type='text' placeholder="Nombre de usuario"></input>
           <hr className='barra-input'></hr>
           <div>
-            <input className='input-login' type='password' placeholder="Contraseña"></input> 
-            <img src={ojito} classname='ojo' alt="icono"></img>
+            <input
+              className='input-login-contra'
+              type={showPassword ? 'text' : 'password'}
+              value={password}
+              placeholder='Contraseña'
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <img
+              src={ojito} classname='ojo'
+              alt="Mostrar contraseña"
+              onClick={handleTogglePassword}
+            />
           </div>
           <hr className='barra-input'></hr>
           <h5>Ya tienes cuenta? <Link to="/login">Inicia sesión</Link></h5>   

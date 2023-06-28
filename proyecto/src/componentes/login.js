@@ -1,9 +1,10 @@
-import React from 'react';
 import '../stylesheet/login.css';
 import { Link } from 'react-router-dom';
 import imagenLogin from "../imagenes/imagen-login.png";
 import iconoLogin from '../bienvenida/imagenes/icono-login.png';
 import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import ojito from  "../bienvenida/imagenes/ojo.png";
 
 export default function LoginPage(){
   const history = useNavigate();
@@ -11,6 +12,14 @@ export default function LoginPage(){
   const redirectToAnotherRoute = () => {
     history('/');
   };
+
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+  
 
   return(
     <div className='contenedor-login'>
@@ -23,12 +32,27 @@ export default function LoginPage(){
         <div className='contenedor-texto-login'>
           <input className='input-login'type='text' placeholder="Nombre de usuario"></input>
           <hr className='barra-input'></hr>
-          <input className='input-login'type='password' placeholder="Contraseña"></input>
+          <div>
+          <input
+            className='input-login-contra'
+            type={showPassword ? 'text' : 'password'}
+            value={password}
+            placeholder='Contraseña'
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <img
+            src={ojito} classname='ojo'
+            alt="Mostrar contraseña"
+            onClick={handleTogglePassword}
+          />
+          </div>
           <hr className='barra-input'></hr>
           <h5>No tienes cuenta? <Link to="/register">Registrate</Link></h5>
         </div>
         {/* <a>Olvidé mi contraseña</a> */}
-        <button type="button" className="boton" onClick={redirectToAnotherRoute}>
+        <button type="button" className="boton" onClick={() => {
+          redirectToAnotherRoute();
+        }}>
           <img src={iconoLogin} alt="icono" className="icono" /> 
           <p className="boton-texto">&nbsp;INICIAR SESION</p>
         </button>

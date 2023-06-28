@@ -1,5 +1,6 @@
 * {
     background-color: #FDD1A3;
+    font-family: 'PT Sans';
   }
   
 
@@ -102,6 +103,14 @@
     float: left;
 }
 
-.ojo{
-    margin-left: -50px;
+.input-login-contra{
+    width: 70%;
+    border: none;
+    outline: none;
+    font-size: 20px;
+}
+
+.ojo {
+    width: 20px; 
+    height: auto; 
 }
