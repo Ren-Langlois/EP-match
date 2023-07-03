@@ -8,18 +8,31 @@ import React, { useState } from 'react';
 
 export default function RegisterPage(){
 
+  //cambiar de ruta
   const history = useNavigate();
 
   const redirectToAnotherRoute = () => {
     history('/');
   };
 
+  //mostrar la contraseña al tocar icono
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
+
+  //al pasar el mouse por el botno se le agregue sombra
+  const [isHovered, setIsHovered] = useState(false);
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+  const boton = `boton ${isHovered ? "boton-true" : "boton-false"}`;
+
   
   return(
     <div className='contenedor-login'>
@@ -52,12 +65,17 @@ export default function RegisterPage(){
           <hr className='barra-input'></hr>
           <h5>Ya tienes cuenta? <Link to="/login">Inicia sesión</Link></h5>   
         </div>
-        <button type="button" className="boton" onClick={redirectToAnotherRoute}>
+        <button 
+          type="button" 
+          className= {boton} 
+          onClick={redirectToAnotherRoute} 
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}>
           <img src={iconoRegistro} alt="icono" className="icono" />
           <p className="boton-texto">&nbsp;&nbsp;REGISTRARSE</p>
         </button>
        </div>
      </div>
-   );
+  );
 }
   
