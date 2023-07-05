@@ -5,6 +5,7 @@ import iconoLogin from '../bienvenida/imagenes/icono-login.png';
 import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import ojito from  "../bienvenida/imagenes/ojo.png";
+import ojito_cerrado from  "../bienvenida/imagenes/ojo_cerrado.png";
 
 export default function LoginPage(){
   const history = useNavigate();
@@ -19,7 +20,7 @@ export default function LoginPage(){
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
-  
+ 
 
   return(
     <div className='contenedor-login'>

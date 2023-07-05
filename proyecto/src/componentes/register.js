@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import imagenRegistro from "../imagenes/imagen-registro.png";
 import iconoRegistro from '../bienvenida/imagenes/icono-registro.png';
 import { useNavigate } from 'react-router-dom';
-import ojito from  "../bienvenida/imagenes/ojo.png";
+import ojito_abierto from  "../bienvenida/imagenes/ojo.png";
 import React, { useState } from 'react';
+import ojito from  "../bienvenida/imagenes/ojo_cerrado.png";
 
 export default function RegisterPage(){
 
@@ -18,9 +19,15 @@ export default function RegisterPage(){
   //mostrar la contraseña al tocar icono
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  
+  const [ojo, setOjo] = useState(ojito);
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
+    if (ojo === ojito) {
+      setOjo(ojito_abierto);
+    } 
+    else {
+      setOjo(ojito);
+    }
   };
 
   //al pasar el mouse por el botno se le agregue sombra
@@ -57,7 +64,7 @@ export default function RegisterPage(){
               onChange={(e) => setPassword(e.target.value)}
             />
             <img
-              src={ojito} classname='ojo'
+              src={ojo} classname='ojo'
               alt="Mostrar contraseña"
               onClick={handleTogglePassword}
             />
