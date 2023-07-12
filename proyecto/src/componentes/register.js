@@ -53,7 +53,7 @@ export default function RegisterPage(){
           <hr className='barra-input'></hr>
           <input className='input-login' type='number' placeholder="Teléfono"></input>
           <hr className='barra-input'></hr>
-          <input className='input-login' type='text' placeholder="Nombre de usuario"></input>
+          <input className='input-login' type='text' placeholder="Nombre y Apellido"></input>
           <hr className='barra-input'></hr>
           <div>
             <input
